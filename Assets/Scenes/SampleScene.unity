@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921a40db9aea1b24fa10b19467e787ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _distanceAttack: 0
+  _distanceAttack: 2
   _enemyLayerMask:
     serializedVersion: 2
     m_Bits: 128
