@@ -2,41 +2,41 @@ using System;
 
 public class CharacterHealth
 {
-    protected int MaxHealth;
-    protected int CurrentHealth;
-    protected int MinHealth;
+    private int _maxValue;
+    private int _currentValue;
+    private int _minValue;
 
     public event Action Died;
 
-    public CharacterHealth(int maxHealth)
+    public CharacterHealth(int maxValue)
     {
-        MaxHealth = maxHealth;
-        CurrentHealth = maxHealth;
-        MinHealth = 0;
+        _maxValue = maxValue;
+        _currentValue = maxValue;
+        _minValue = 0;
     }
 
     public void TakeDamage(int damage)
     {
-        int nextHealth = CurrentHealth - damage;
+        int nextValue = _currentValue - damage;
 
-        if (nextHealth <= MinHealth)
+        if (nextValue <= _minValue)
         {
-            CurrentHealth = MinHealth;
+            _currentValue = _minValue;
             Died?.Invoke();
         }
         else
         {
-            CurrentHealth = nextHealth;
+            _currentValue = nextValue;
         }
     }
 
-    public void Healed(int unitHealth)
+    public void Heal(int unitHealth)
     {
-        int nextHealth = CurrentHealth + unitHealth;
+        int nextHealth = _currentValue + unitHealth;
 
-        if (nextHealth >= MaxHealth)
-            CurrentHealth = MaxHealth;
+        if (nextHealth >= _maxValue)
+            _currentValue = _maxValue;
         else
-            CurrentHealth = nextHealth;
+            _currentValue = nextHealth;
     }
 }

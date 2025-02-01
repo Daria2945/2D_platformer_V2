@@ -1,21 +1,18 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Game))]
 public class GroundDetector : MonoBehaviour
 {
     [SerializeField] private float _delay = 0.1f;
     [SerializeField] private float _detectorRadius = 0.2f;
     [SerializeField] private LayerMask _groundLayerMask;
 
-    private Game _game;
     private bool _isGrounded;
 
     public bool IsGrounded => _isGrounded;
 
-    private void Awake()
+    private void OnEnable()
     {
-        _game = GetComponent<Game>();
         StartCoroutine(GetIsGrounded());
     }
 
@@ -30,7 +27,7 @@ public class GroundDetector : MonoBehaviour
     {
         var wait = new WaitForSeconds(_delay);
 
-        while (_game.IsGameOver == false)
+        while (enabled)
         {
             _isGrounded = CanFindGround();
 

@@ -797,7 +797,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 899453152}
-  - component: {fileID: 899453154}
   - component: {fileID: 899453153}
   m_Layer: 0
   m_Name: GroundDetector
@@ -838,18 +837,6 @@ MonoBehaviour:
   _groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &899453154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899453151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3ccc4e3360f5e34aa9637e5dd511012, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1006391169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,7 +1016,7 @@ MonoBehaviour:
   _animationSwicher: {fileID: 408922033}
   _events: {fileID: 408922034}
   _maxHealth: 10
-  _collisionDetector: {fileID: 1696167166}
+  _itemDetector: {fileID: 0}
   _wallet: {fileID: 462196854}
 --- !u!50 &1452629492
 Rigidbody2D:
@@ -2295,7 +2282,7 @@ GameObject:
   - component: {fileID: 1696167168}
   - component: {fileID: 1696167169}
   m_Layer: 0
-  m_Name: CollisionDetector
+  m_Name: ItemDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2621,7 +2608,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2042774387}
-  - component: {fileID: 2042774389}
   - component: {fileID: 2042774388}
   m_Layer: 0
   m_Name: GroundDetector
@@ -2662,18 +2648,6 @@ MonoBehaviour:
   _groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &2042774389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042774386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3ccc4e3360f5e34aa9637e5dd511012, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2047256266
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : Character
 {
-    [SerializeField] private CollisionDetector _collisionDetector;
+    [SerializeField] private ItemDetector _itemDetector;
     [SerializeField] private Wallet _wallet;
 
     private void OnEnable()
@@ -10,8 +10,8 @@ public class Player : Character
         Health.Died += PlayDeathAnimation;
         Events.Died += Die;
 
-        _collisionDetector.PotionFound += Healed;
-        _collisionDetector.CoinFound += CollectCoin;
+        _itemDetector.PotionFound += Healed;
+        _itemDetector.CoinFound += CollectCoin;
     }
 
     private void OnDisable()
@@ -19,13 +19,13 @@ public class Player : Character
         Health.Died += PlayDeathAnimation;
         Events.Died += Die;
 
-        _collisionDetector.PotionFound -= Healed;
-        _collisionDetector.CoinFound -= CollectCoin;
+        _itemDetector.PotionFound -= Healed;
+        _itemDetector.CoinFound -= CollectCoin;
     }
 
     private void Healed(Potion potion)
     {
-        Health.Healed(potion.RegenerationUnits);
+        Health.Heal(potion.RegenerationUnits);
         potion.Hide();
     }
 
