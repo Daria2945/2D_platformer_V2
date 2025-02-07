@@ -14,5 +14,5 @@ public class EnemyWalk : EnemyState
 
     public void SetTarget(Transform target) => _target = target;
 
-    public override void FixedUpdate() => ChangerRigidbody.ChangeVelocityX(_direction.x, Info.SpeedMove);
+    public override void FixedUpdate() => ChangerSpeed.ChangeVelocityX(_direction.x, Info.SpeedMove);
 }

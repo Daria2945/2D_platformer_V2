@@ -4,22 +4,22 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
     [SerializeField] private AnimationSwicher _animationSwicher;
-    [SerializeField] private CharacterAnimationEvents _events;
+    [SerializeField] private CharacterAnimationEvent _events;
 
     [Header(" ")]
     [SerializeField] private int _maxHealth;
 
-    private CharacterHealth _health;
+    private Health _health;
 
     public AnimationSwicher AnimationSwicher => _animationSwicher;
-    public CharacterAnimationEvents Events => _events;
-    public CharacterHealth Health => _health;
+    public CharacterAnimationEvent Events => _events;
+    public Health Health => _health;
     public Rigidbody2D Rigidbody { get; private set; }
 
     private void Awake()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
-        _health = new CharacterHealth(_maxHealth);
+        _health = new Health(_maxHealth);
     }
 
     protected void PlayDeathAnimation()

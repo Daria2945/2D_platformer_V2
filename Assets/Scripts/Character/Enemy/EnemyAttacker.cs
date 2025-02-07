@@ -55,7 +55,7 @@ public class EnemyAttacker : Attacker
     {
         while (true)
         {
-            Character.AnimationSwicher.Attack();
+            PlayAttackAnimation();
 
             yield return Wait;
         }

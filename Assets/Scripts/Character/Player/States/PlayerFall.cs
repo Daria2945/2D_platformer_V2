@@ -10,7 +10,7 @@ public class PlayerFall : PlayerState
     public override void FixedUpdate()
     {
         if (PlayerMoverInfo.InputReader.Direction != 0)
-            ChangerRigidbody.ChangeVelocityX(PlayerMoverInfo.InputReader.Direction, PlayerMoverInfo.MoveSpeed);
+            ChangerSpeed.ChangeVelocityX(PlayerMoverInfo.InputReader.Direction, PlayerMoverInfo.MoveSpeed);
     }
 
     private void Fall()

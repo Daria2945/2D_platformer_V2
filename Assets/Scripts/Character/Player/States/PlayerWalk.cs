@@ -4,6 +4,6 @@ public class PlayerWalk : PlayerState
 
     public override void FixedUpdate()
     {
-        ChangerRigidbody.ChangeVelocityX(PlayerMoverInfo.InputReader.Direction, PlayerMoverInfo.MoveSpeed);
+        ChangerSpeed.ChangeVelocityX(PlayerMoverInfo.InputReader.Direction, PlayerMoverInfo.MoveSpeed);
     }
 }

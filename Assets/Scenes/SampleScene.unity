@@ -351,7 +351,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 268081886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48a8f57f5f605bd438775a20fd6f1ca7, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b8a4b3e96d11ab4ea7ca8a52a8513a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &270161757
@@ -559,7 +559,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 408922029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48a8f57f5f605bd438775a20fd6f1ca7, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b8a4b3e96d11ab4ea7ca8a52a8513a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &462196853
@@ -1015,8 +1015,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animationSwicher: {fileID: 408922033}
   _events: {fileID: 408922034}
-  _maxHealth: 10
-  _itemDetector: {fileID: 0}
+  _maxHealth: 0
+  _itemDetector: {fileID: 1696167166}
   _wallet: {fileID: 462196854}
 --- !u!50 &1452629492
 Rigidbody2D:

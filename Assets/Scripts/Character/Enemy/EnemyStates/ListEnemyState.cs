@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class ListEnemyStates
+public class ListEnemyState
 {
     private const string Patrol = "Patrol";
     private const string Chest = "Chest";
@@ -8,7 +8,7 @@ public class ListEnemyStates
 
     private Dictionary<string, EnemyState> _states;
 
-    public ListEnemyStates(EnemyMoverInfo enemyMoverInfo)
+    public ListEnemyState(EnemyMoverInfo enemyMoverInfo)
     {
         InitializeStates(enemyMoverInfo);
     }

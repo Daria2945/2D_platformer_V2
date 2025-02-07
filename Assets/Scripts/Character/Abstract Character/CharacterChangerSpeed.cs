@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class CharacterChangerRigidbody
+public class CharacterChangerSpeed
 {
     private Character _character;
 
-    public CharacterChangerRigidbody(Character character)
+    public CharacterChangerSpeed(Character character)
     {
         _character = character;
     }

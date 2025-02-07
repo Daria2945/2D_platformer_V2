@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class CharacterAnimationEvents : MonoBehaviour
+public class CharacterAnimationEvent : MonoBehaviour
 {
     public event Action Attacking;
     public event Action Died;

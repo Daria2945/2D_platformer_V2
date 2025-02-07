@@ -1,7 +1,7 @@
 public abstract class CharacterState
 {
     protected Character Character;
-    protected CharacterChangerRigidbody ChangerRigidbody;
+    protected CharacterChangerSpeed ChangerSpeed;
 
     public CharacterState(Character character)
     {
@@ -10,7 +10,7 @@ public abstract class CharacterState
 
     public void Inizialize()
     {
-        ChangerRigidbody = new CharacterChangerRigidbody(Character);
+        ChangerSpeed = new CharacterChangerSpeed(Character);
     }
 
     public virtual void Enter() { }

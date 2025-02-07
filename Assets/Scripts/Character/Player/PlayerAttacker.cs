@@ -28,7 +28,7 @@ public class PlayerAttacker : Attacker
             Target = enemy;
 
             StartCoroutine(StartCooldown());
-            Character.AnimationSwicher.Attack();
+            PlayAttackAnimation();
 
             return;
         }
@@ -37,7 +37,7 @@ public class PlayerAttacker : Attacker
             Target = null;
             _canAttack = true;
 
-            Character.AnimationSwicher.Attack();
+            PlayAttackAnimation();
         }
     }
 

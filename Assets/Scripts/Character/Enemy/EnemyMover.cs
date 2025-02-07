@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyMover : MonoBehaviour
 {
     private EnemyMoverInfo _info;
-    private ListEnemyStates _states;
+    private ListEnemyState _states;
 
     private EnemyState _currentState;
 
@@ -17,7 +17,7 @@ public class EnemyMover : MonoBehaviour
 
     private void Start()
     {
-        _states = new ListEnemyStates(_info);
+        _states = new ListEnemyState(_info);
     }
 
     private void Update()

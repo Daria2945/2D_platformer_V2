@@ -6,16 +6,17 @@ public abstract class Attacker : MonoBehaviour
     [SerializeField] private int _damage;
     [SerializeField] private float _attackCooldown;
 
-    [SerializeField] private CharacterAnimationEvents _animationEvents;
+    [SerializeField] private CharacterAnimationEvent _animationEvents;
+
+    private Character _character;
 
     protected Character Target;
 
-    protected Character Character { get; private set; }
     protected WaitForSecondsRealtime Wait { get; private set; }
 
     private void Start()
     {
-        Character = GetComponent<Character>();
+        _character = GetComponent<Character>();
         Wait = new WaitForSecondsRealtime(_attackCooldown);
     }
 
@@ -28,6 +29,8 @@ public abstract class Attacker : MonoBehaviour
     {
         _animationEvents.Attacking -= Attack;
     }
+
+    protected void PlayAttackAnimation() => _character.AnimationSwicher.Attack();
 
     private void Attack()
     {

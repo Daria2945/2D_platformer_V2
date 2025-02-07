@@ -1,6 +1,6 @@
 using System;
 
-public class CharacterHealth
+public class Health
 {
     private int _maxValue;
     private int _currentValue;
@@ -8,8 +8,16 @@ public class CharacterHealth
 
     public event Action Died;
 
-    public CharacterHealth(int maxValue)
+    public Health(int maxValue)
     {
+        if(maxValue <= 0)
+        {
+            _maxValue = 1;
+            _currentValue = _maxValue;
+
+            return;
+        }
+
         _maxValue = maxValue;
         _currentValue = maxValue;
         _minValue = 0;

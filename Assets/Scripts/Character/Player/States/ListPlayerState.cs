@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class ListPlayerStates
+public class ListPlayerState
 {
     private const string Idle = "Idle";
     private const string Walk = "Walk";
@@ -9,7 +9,7 @@ public class ListPlayerStates
 
     private Dictionary<string, PlayerState> _states;
 
-    public ListPlayerStates(PlayerMoverInfo playerMoverInfo)
+    public ListPlayerState(PlayerMoverInfo playerMoverInfo)
     {
         InitializeStates(playerMoverInfo);
     }

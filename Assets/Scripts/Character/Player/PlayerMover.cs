@@ -6,7 +6,7 @@ public class PlayerMover : MonoBehaviour
 {
     private PlayerMoverInfo _info;
 
-    private ListPlayerStates _states;
+    private ListPlayerState _states;
     private PlayerState _currentState;
 
     private void Awake()
@@ -16,7 +16,7 @@ public class PlayerMover : MonoBehaviour
 
     private void Start()
     {
-        _states = new ListPlayerStates(_info);
+        _states = new ListPlayerState(_info);
     }
 
     private void Update()
