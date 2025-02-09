@@ -7,7 +7,7 @@ public class EnemyWalk : EnemyState
 
     private Vector2 _direction => (_target.position - _transform.position).normalized;
 
-    public EnemyWalk(EnemyMoverInfo enemyMoverInfo) : base(enemyMoverInfo)
+    public EnemyWalk(StateMachine stateMachine, EnemyMoverInfo enemyMoverInfo) : base(stateMachine, enemyMoverInfo)
     {
         _transform = enemyMoverInfo.transform;
     }

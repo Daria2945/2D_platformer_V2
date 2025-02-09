@@ -1,16 +1,19 @@
 public abstract class CharacterState
 {
-    protected Character Character;
+    protected StateMachine StateMachine;
     protected CharacterChangerSpeed ChangerSpeed;
 
-    public CharacterState(Character character)
+    private Character _character;
+
+    public CharacterState(StateMachine stateMachine, Character character)
     {
-        Character = character;
+        StateMachine = stateMachine;
+        _character = character;
     }
 
     public void Inizialize()
     {
-        ChangerSpeed = new CharacterChangerSpeed(Character);
+        ChangerSpeed = new CharacterChangerSpeed(_character);
     }
 
     public virtual void Enter() { }

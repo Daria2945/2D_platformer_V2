@@ -10,7 +10,7 @@ public class Health
 
     public Health(int maxValue)
     {
-        if(maxValue <= 0)
+        if (maxValue <= 0)
         {
             _maxValue = 1;
             _currentValue = _maxValue;

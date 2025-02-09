@@ -4,11 +4,9 @@ using UnityEngine;
 public class EnemyMover : MonoBehaviour
 {
     private EnemyMoverInfo _info;
-    private ListEnemyState _states;
+    private EnemyStateMachine _stateMachine;
 
-    private EnemyState _currentState;
-
-    private bool _isPatrol;
+    private bool _isPatrol => _stateMachine.CurrentState.GetType() == typeof(EnemyPatrol);
 
     private void Awake()
     {
@@ -17,39 +15,20 @@ public class EnemyMover : MonoBehaviour
 
     private void Start()
     {
-        _states = new ListEnemyState(_info);
+        _stateMachine = new EnemyStateMachine(_info);
     }
 
     private void Update()
     {
         PlayAnimation();
-        ChangeStates();
 
-        _currentState?.Update();
+        _stateMachine?.Update();
     }
 
     private void FixedUpdate()
     {
         if (_info.GroundDetector.IsGrounded)
-            _currentState?.FixedUpdate();
-    }
-
-    private void ChangeStates()
-    {
-        if (_info.Target != null)
-        {
-            _isPatrol = false;
-
-            if (Vector2.Distance(transform.position, _info.Target.transform.position) <= _info.AttackDistance)
-                _states.StartAttack(out _currentState);
-            else
-                _states.StartChest(_info.Target, out _currentState);
-        }
-        else if (_info.Target == null && _isPatrol == false)
-        {
-            _isPatrol = true;
-            _states.StartPatrol(out _currentState);
-        }
+            _stateMachine?.FixedUpdate();
     }
 
     private void PlayAnimation()

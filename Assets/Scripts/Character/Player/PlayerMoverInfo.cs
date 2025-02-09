@@ -19,9 +19,16 @@ public class PlayerMoverInfo : MonoBehaviour
 
     public GroundDetector GroundDetector => _groundDetector;
 
+    public bool CanJump { get; private set; }
+
     private void Awake()
     {
         Player = GetComponent<Player>();
         InputReader = GetComponent<InputReader>();
+    }
+
+    private void Update()
+    {
+        CanJump = InputReader.CanJump() && GroundDetector.IsGrounded;
     }
 }

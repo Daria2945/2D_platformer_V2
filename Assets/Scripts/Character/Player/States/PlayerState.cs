@@ -1,9 +1,9 @@
 public abstract class PlayerState : CharacterState
 {
-    protected PlayerMoverInfo PlayerMoverInfo;
+    protected PlayerMoverInfo Info;
 
-    public PlayerState(PlayerMoverInfo playerMoverInfo) : base(playerMoverInfo.Player)
+    public PlayerState(StateMachine stateMachine, PlayerMoverInfo playerMoverInfo) : base(stateMachine, playerMoverInfo.Player)
     {
-        PlayerMoverInfo = playerMoverInfo;
+        Info = playerMoverInfo;
     }
 }

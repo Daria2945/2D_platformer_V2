@@ -13,6 +13,6 @@ public class CharacterChangerSpeed
     {
         float newVelocityX = direction * moveSpeed;
 
-        _character.Rigidbody.velocity = new Vector2 (newVelocityX, _character.Rigidbody.velocity.y);
+        _character.Rigidbody.velocity = new Vector2(newVelocityX, _character.Rigidbody.velocity.y);
     }
 }

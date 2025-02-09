@@ -1,24 +1,31 @@
+using UnityEngine;
+
 public class EnemyChest : EnemyState
 {
-    private Player _target;
     private EnemyWalk _walk;
 
-    public EnemyChest(EnemyMoverInfo enemyMoverInfo) : base(enemyMoverInfo)
+    public EnemyChest(StateMachine stateMahine, EnemyMoverInfo enemyMoverInfo) : base(stateMahine, enemyMoverInfo)
     {
         InitializeWalk();
     }
 
     private void InitializeWalk()
     {
-        _walk = new EnemyWalk(Info);
+        _walk = new EnemyWalk(StateMachine, Info);
         _walk.Inizialize();
     }
 
-    public void SetTarget(Player target) => _target = target;
-
-    private void SetTarget() => _walk.SetTarget(_target.transform);
+    private void SetTarget() => _walk.SetTarget(Info.Target.transform);
 
     public override void Enter() => SetTarget();
 
     public override void FixedUpdate() => _walk?.FixedUpdate();
+
+    public override void Update()
+    {
+        if (Info.Target == null)
+            StateMachine.SetSate<EnemyPatrol>();
+        else if (Info.Target != null && Vector2.Distance(Info.transform.position, Info.Target.transform.position) <= Info.AttackDistance)
+            StateMachine.SetSate<EnemyIdle>();
+    }
 }

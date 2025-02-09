@@ -11,13 +11,11 @@ public abstract class Attacker : MonoBehaviour
     private Character _character;
 
     protected Character Target;
-
-    protected WaitForSecondsRealtime Wait { get; private set; }
+    protected float AttackCooldown => _attackCooldown;
 
     private void Start()
     {
         _character = GetComponent<Character>();
-        Wait = new WaitForSecondsRealtime(_attackCooldown);
     }
 
     private void OnEnable()

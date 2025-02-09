@@ -1,4 +1,14 @@
+using UnityEngine;
+
 public class EnemyIdle : EnemyState
 {
-    public EnemyIdle(EnemyMoverInfo enemyMoverInfo) : base(enemyMoverInfo) { }
+    public EnemyIdle(StateMachine stateMachine, EnemyMoverInfo enemyMoverInfo) : base(stateMachine, enemyMoverInfo) { }
+
+    public override void Update()
+    {
+        if (Info.Target == null)
+            StateMachine.SetSate<EnemyPatrol>();
+        else if (Info.Target != null && Vector2.Distance(Info.transform.position, Info.Target.transform.position) > Info.AttackDistance)
+            StateMachine.SetSate<EnemyChest>();
+    }
 }

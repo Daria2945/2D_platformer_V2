@@ -53,11 +53,15 @@ public class EnemyAttacker : Attacker
 
     private IEnumerator Attack()
     {
+        var wait = new WaitForSecondsRealtime(AttackCooldown);
+
         while (true)
         {
             PlayAttackAnimation();
 
-            yield return Wait;
+            Debug.Log("Work coroutine");
+
+            yield return wait;
         }
     }
 }

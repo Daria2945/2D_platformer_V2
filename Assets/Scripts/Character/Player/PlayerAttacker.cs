@@ -43,9 +43,11 @@ public class PlayerAttacker : Attacker
 
     private IEnumerator StartCooldown()
     {
+        var wait = new WaitForSecondsRealtime(AttackCooldown);
+
         _canAttack = false;
 
-        yield return Wait;
+        yield return wait;
 
         _canAttack = true;
 

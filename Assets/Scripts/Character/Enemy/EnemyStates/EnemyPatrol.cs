@@ -9,7 +9,7 @@ public class EnemyPatrol : EnemyState
 
     private bool _isTargetReached => Vector2.Distance(_transform.position, Info.Waypoints[_currentPoint].position) <= Info.RequiredProximityToTargetPoint;
 
-    public EnemyPatrol(EnemyMoverInfo enemyMoverInfo) : base(enemyMoverInfo)
+    public EnemyPatrol(StateMachine stateMachine, EnemyMoverInfo enemyMoverInfo) : base(stateMachine, enemyMoverInfo)
     {
         _transform = enemyMoverInfo.transform;
         InitializeWalk();
@@ -25,6 +25,9 @@ public class EnemyPatrol : EnemyState
     {
         if (_isTargetReached)
             ChangeCurrentPoint();
+
+        if (Info.Target != null)
+            StateMachine.SetSate<EnemyChest>();
     }
 
     public override void FixedUpdate()
@@ -34,7 +37,7 @@ public class EnemyPatrol : EnemyState
 
     private void InitializeWalk()
     {
-        _walk = new EnemyWalk(Info);
+        _walk = new EnemyWalk(StateMachine, Info);
         _walk.Inizialize();
 
         _walk.SetTarget(Info.Waypoints[_currentPoint]);

@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animationSwicher: {fileID: 408922033}
   _events: {fileID: 408922034}
-  _maxHealth: 0
+  _maxHealth: 25
   _itemDetector: {fileID: 1696167166}
   _wallet: {fileID: 462196854}
 --- !u!50 &1452629492

@@ -1,20 +1,31 @@
 public class PlayerFall : PlayerState
 {
-    public PlayerFall(PlayerMoverInfo playerMoverInfo) : base(playerMoverInfo) { }
+    public PlayerFall(StateMachine stateMachine, PlayerMoverInfo playerMoverInfo) : base(stateMachine, playerMoverInfo) { }
 
     public override void Enter()
     {
         Fall();
     }
 
+    public override void Update()
+    {
+        if (Info.GroundDetector.IsGrounded)
+        {
+            if (Info.InputReader.Direction == 0)
+                StateMachine.SetSate<PlayerIdle>();
+            else if (Info.InputReader.Direction != 0)
+                StateMachine.SetSate<PlayerWalk>();
+        }
+    }
+
     public override void FixedUpdate()
     {
-        if (PlayerMoverInfo.InputReader.Direction != 0)
-            ChangerSpeed.ChangeVelocityX(PlayerMoverInfo.InputReader.Direction, PlayerMoverInfo.MoveSpeed);
+        if (Info.InputReader.Direction != 0)
+            ChangerSpeed.ChangeVelocityX(Info.InputReader.Direction, Info.MoveSpeed);
     }
 
     private void Fall()
     {
-        Character.Rigidbody.gravityScale = PlayerMoverInfo.FallSpeed;
+        Info.Player.Rigidbody.gravityScale = Info.FallSpeed;
     }
 }

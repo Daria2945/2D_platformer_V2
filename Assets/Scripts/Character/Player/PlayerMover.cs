@@ -1,13 +1,10 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMoverInfo))]
 public class PlayerMover : MonoBehaviour
 {
     private PlayerMoverInfo _info;
-
-    private ListPlayerState _states;
-    private PlayerState _currentState;
+    private PlayerStateMachine _stateMachine;
 
     private void Awake()
     {
@@ -16,43 +13,27 @@ public class PlayerMover : MonoBehaviour
 
     private void Start()
     {
-        _states = new ListPlayerState(_info);
+        _stateMachine = new PlayerStateMachine(_info);
     }
 
     private void Update()
     {
-        ChangeState();
+        PlayAnimation();
 
-        _currentState?.Update();
+        _stateMachine?.Update();
     }
 
     private void FixedUpdate()
     {
-        _currentState?.FixedUpdate();
+        _stateMachine?.FixedUpdate();
     }
 
-    private void ChangeState()
+    private void PlayAnimation()
     {
-        float direction = _info.InputReader.Direction;
+        float velocityX = Mathf.Abs(_info.Player.Rigidbody.velocity.x);
         float velocityY = _info.Player.Rigidbody.velocity.y;
-        float velocityX = _info.Player.Rigidbody.velocity.x;
-        bool canJump = _info.InputReader.CanJump();
         bool isGround = _info.GroundDetector.IsGrounded;
 
-        PlayAnimation(MathF.Abs(velocityX), velocityY, isGround);
-
-        _currentState = _states.GetState(direction, velocityY, canJump, isGround);
-        SetNewState(_currentState);
-    }
-
-    private void SetNewState(PlayerState state)
-    {
-        _currentState = state;
-        _currentState?.Enter();
-    }
-
-    private void PlayAnimation(float speed, float velocityY, bool isGround)
-    {
-        ((PlayerAnimationSwicher)_info.Player.AnimationSwicher).SetAnimation(speed, velocityY, isGround);
+        ((PlayerAnimationSwicher)_info.Player.AnimationSwicher).SetAnimation(velocityX, velocityY, isGround);
     }
 }

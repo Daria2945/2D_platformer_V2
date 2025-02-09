@@ -9,13 +9,13 @@ public class InputReader : MonoBehaviour
     private bool _isJump;
     private bool _canAttack;
 
-    public float Direction {  get; private set; }
+    public float Direction { get; private set; }
 
     private void Update()
     {
         Direction = Input.GetAxis(Horizontal);
 
-        if(Input.GetKeyDown(JupmKey))
+        if (Input.GetKeyDown(JupmKey))
             _isJump = true;
 
         if (Input.GetKeyDown(AttackKey))
