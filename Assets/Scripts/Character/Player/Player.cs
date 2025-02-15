@@ -10,7 +10,7 @@ public class Player : Character
         Health.Died += PlayDeathAnimation;
         Events.Died += Die;
 
-        _itemDetector.PotionFound += Heal;
+        _itemDetector.PotionFound += ReceiveTreatment;
         _itemDetector.CoinFound += CollectCoin;
     }
 
@@ -19,13 +19,13 @@ public class Player : Character
         Health.Died += PlayDeathAnimation;
         Events.Died += Die;
 
-        _itemDetector.PotionFound -= Heal;
+        _itemDetector.PotionFound -= ReceiveTreatment;
         _itemDetector.CoinFound -= CollectCoin;
     }
 
-    private void Heal(Potion potion)
+    private void ReceiveTreatment(Potion potion)
     {
-        Health.Heal(potion.RegenerationUnits);
+        Health.ReceiveTreatment(potion.RegenerationUnits);
         potion.Hide();
     }
 

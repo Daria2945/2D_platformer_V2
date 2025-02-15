@@ -6,6 +6,7 @@ public class Health
     private int _currentValue;
     private int _minValue;
 
+    public event Action<int> ChangedValue;
     public event Action Died;
 
     public Health(int maxValue)
@@ -36,9 +37,11 @@ public class Health
         {
             _currentValue = nextValue;
         }
+
+        ChangedValue?.Invoke(_currentValue);
     }
 
-    public void Heal(int unitHealth)
+    public void ReceiveTreatment(int unitHealth)
     {
         int nextHealth = _currentValue + unitHealth;
 
@@ -46,5 +49,7 @@ public class Health
             _currentValue = _maxValue;
         else
             _currentValue = nextHealth;
+
+        ChangedValue?.Invoke(_currentValue);
     }
 }

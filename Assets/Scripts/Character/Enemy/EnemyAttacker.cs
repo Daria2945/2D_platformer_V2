@@ -59,8 +59,6 @@ public class EnemyAttacker : Attacker
         {
             PlayAttackAnimation();
 
-            Debug.Log("Work coroutine");
-
             yield return wait;
         }
     }

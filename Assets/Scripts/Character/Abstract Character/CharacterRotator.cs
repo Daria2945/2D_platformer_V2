@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class CharacterRotator : MonoBehaviour
 {
-    private Transform _transform;
+    [SerializeField] private Transform _visual;
+
     private Rigidbody2D _rigidbody;
     private float _rotationAngle = 180f;
 
@@ -10,7 +11,6 @@ public class CharacterRotator : MonoBehaviour
 
     private void Awake()
     {
-        _transform = transform;
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
@@ -33,6 +33,6 @@ public class CharacterRotator : MonoBehaviour
 
     private void Rotate()
     {
-        _transform.Rotate(0, _rotationAngle, 0);
+        _visual.Rotate(0, _rotationAngle, 0);
     }
 }

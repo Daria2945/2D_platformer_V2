@@ -14,11 +14,16 @@ public abstract class Character : MonoBehaviour
     public AnimationSwicher AnimationSwicher => _animationSwicher;
     public CharacterAnimationEvent Events => _events;
     public Health Health => _health;
+    public int MaxHealth => _maxHealth;
     public Rigidbody2D Rigidbody { get; private set; }
 
     private void Awake()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    public void InitializeHealth()
+    {
         _health = new Health(_maxHealth);
     }
 
