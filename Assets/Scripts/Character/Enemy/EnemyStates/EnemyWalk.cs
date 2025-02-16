@@ -12,7 +12,9 @@ public class EnemyWalk : EnemyState
         _transform = enemyMoverInfo.transform;
     }
 
-    public void SetTarget(Transform target) => _target = target;
+    public void SetTarget(Transform target) =>
+        _target = target;
 
-    public override void FixedUpdate() => ChangerSpeed.ChangeVelocityX(_direction.x, Info.SpeedMove);
+    public override void FixedUpdate() =>
+        ChangerSpeed.ChangeVelocityX(_direction.x, Info.SpeedMove);
 }

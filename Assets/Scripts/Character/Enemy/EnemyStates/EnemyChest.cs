@@ -15,17 +15,20 @@ public class EnemyChest : EnemyState
         _walk.Inizialize();
     }
 
-    private void SetTarget() => _walk.SetTarget(Info.Target.transform);
+    private void SetTarget() =>
+        _walk.SetTarget(Info.Target.transform);
 
-    public override void Enter() => SetTarget();
+    public override void Enter() =>
+        SetTarget();
 
-    public override void FixedUpdate() => _walk?.FixedUpdate();
+    public override void FixedUpdate() =>
+        _walk?.FixedUpdate();
 
     public override void Update()
     {
         if (Info.Target == null)
-            StateMachine.SetSate<EnemyPatrol>();
+            StateMachine.ChangeSate<EnemyPatrol>();
         else if (Info.Target != null && Vector2.Distance(Info.transform.position, Info.Target.transform.position) <= Info.AttackDistance)
-            StateMachine.SetSate<EnemyIdle>();
+            StateMachine.ChangeSate<EnemyIdle>();
     }
 }

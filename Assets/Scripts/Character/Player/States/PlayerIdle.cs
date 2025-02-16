@@ -5,10 +5,10 @@ public class PlayerIdle : PlayerState
     public override void Update()
     {
         if (Info.InputReader.Direction != 0)
-            StateMachine.SetSate<PlayerWalk>();
+            StateMachine.ChangeSate<PlayerWalk>();
         else if (Info.CanJump)
-            StateMachine.SetSate<PlayerJump>();
+            StateMachine.ChangeSate<PlayerJump>();
         else if (Info.GroundDetector.IsGrounded == false && Info.Player.Rigidbody.velocity.y < 0)
-            StateMachine.SetSate<PlayerFall>();
+            StateMachine.ChangeSate<PlayerFall>();
     }
 }

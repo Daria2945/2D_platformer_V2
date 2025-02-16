@@ -40,7 +40,9 @@ public class EnemyMoverInfo : MonoBehaviour
         _playerDetector.PlayerLost -= DeletePlayer;
     }
 
-    private void SetPlayer(Player player) => Target = player;
+    private void SetPlayer(Player player) =>
+        Target = player;
 
-    private void DeletePlayer() => Target = null;
+    private void DeletePlayer() =>
+        Target = null;
 }

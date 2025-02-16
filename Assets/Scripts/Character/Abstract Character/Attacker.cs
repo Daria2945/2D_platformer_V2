@@ -28,7 +28,8 @@ public abstract class Attacker : MonoBehaviour
         _animationEvents.Attacking -= Attack;
     }
 
-    protected void PlayAttackAnimation() => _character.AnimationSwicher.Attack();
+    protected void PlayAttackAnimation() =>
+        _character.AnimationSwicher.Attack();
 
     private void Attack()
     {

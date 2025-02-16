@@ -13,7 +13,7 @@ public class StateMachine
         _states[state.GetType()].Inizialize();
     }
 
-    public void SetSate<T>() where T : CharacterState
+    public void ChangeSate<T>() where T : CharacterState
     {
         var type = typeof(T);
 

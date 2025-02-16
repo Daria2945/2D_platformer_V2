@@ -12,9 +12,9 @@ public class PlayerFall : PlayerState
         if (Info.GroundDetector.IsGrounded)
         {
             if (Info.InputReader.Direction == 0)
-                StateMachine.SetSate<PlayerIdle>();
+                StateMachine.ChangeSate<PlayerIdle>();
             else if (Info.InputReader.Direction != 0)
-                StateMachine.SetSate<PlayerWalk>();
+                StateMachine.ChangeSate<PlayerWalk>();
         }
     }
 

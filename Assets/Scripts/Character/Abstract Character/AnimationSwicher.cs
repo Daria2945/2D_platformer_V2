@@ -16,13 +16,18 @@ public class AnimationSwicher : MonoBehaviour
         StartLive();
     }
 
-    public void StartLive() => Animator.SetBool(IsLive, true);
+    public void StartLive() =>
+        Animator.SetBool(IsLive, true);
 
-    public void StopLive() => Animator.SetBool(IsLive, false);
+    public void StopLive() =>
+        Animator.SetBool(IsLive, false);
 
-    public void Attack() => Animator.SetTrigger(IsAttack);
+    public void Attack() =>
+        Animator.SetTrigger(IsAttack);
 
-    public void TakeDamage() => Animator.SetTrigger(IsHurt);
+    public void TakeDamage() =>
+        Animator.SetTrigger(IsHurt);
 
-    public void Die() => Animator.SetTrigger(IsDead);
+    public void Die() =>
+        Animator.SetTrigger(IsDead);
 }

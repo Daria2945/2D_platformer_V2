@@ -11,6 +11,6 @@ public class EnemyStateMachine : StateMachine
         AddState(new EnemyChest(this, enemyMoverInfo));
         AddState(new EnemyIdle(this, enemyMoverInfo));
 
-        SetSate<EnemyPatrol>();
+        ChangeSate<EnemyPatrol>();
     }
 }

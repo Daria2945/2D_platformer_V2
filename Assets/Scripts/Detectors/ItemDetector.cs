@@ -12,6 +12,7 @@ public class ItemDetector : MonoBehaviour
         {
             if (item is Coin coin)
                 CoinFound?.Invoke(coin);
+
             if (item is Potion potion)
                 PotionFound?.Invoke(potion);
         }

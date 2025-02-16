@@ -27,7 +27,7 @@ public class EnemyPatrol : EnemyState
             ChangeCurrentPoint();
 
         if (Info.Target != null)
-            StateMachine.SetSate<EnemyChest>();
+            StateMachine.ChangeSate<EnemyChest>();
     }
 
     public override void FixedUpdate()

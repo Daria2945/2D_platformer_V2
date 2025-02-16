@@ -10,7 +10,7 @@ public class PlayerJump : PlayerState
     public override void Update()
     {
         if (Info.Player.Rigidbody.velocity.y < 0)
-            StateMachine.SetSate<PlayerFall>();
+            StateMachine.ChangeSate<PlayerFall>();
     }
 
     public void Jump()

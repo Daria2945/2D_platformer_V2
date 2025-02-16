@@ -12,6 +12,6 @@ public class PlayerStateMachine : StateMachine
         AddState(new PlayerJump(this, playerMoverInfo));
         AddState(new PlayerFall(this, playerMoverInfo));
 
-        SetSate<PlayerIdle>();
+        ChangeSate<PlayerIdle>();
     }
 }
