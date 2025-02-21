@@ -1,46 +1,47 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class VampirismTimerBar : MonoBehaviour
+public class TimerView : MonoBehaviour
 {
     private const string Text = "Timer Vampirizm";
 
     [SerializeField] private Image _visual;
     [SerializeField] private TextMeshProUGUI _text;
 
-    [SerializeField] private float _abilityDuration;
-    [SerializeField] private float _reloadTime;
-
     private float _startFillValue = 0;
     private float _endFillValue = 1;
 
-    public event Action AbilityExpired;
-    public event Action ReloadFinished;
+    private Coroutine _coroutine;
 
     private void Start()
     {
         _visual.fillAmount = _endFillValue;
     }
 
-    public void StartCounting()
+    public void StartCounting(float delay)
     {
-        StartCoroutine(Updating(_abilityDuration, _startFillValue, action: AbilityExpired));
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(Updating(delay, _startFillValue));
     }
 
-    public void Reload()
+    public void Reload(float delay)
     {
-        StartCoroutine(Updating(_reloadTime, _endFillValue, action: ReloadFinished));
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(Updating(delay, _endFillValue));
     }
 
-    private IEnumerator Updating(float delay, float targetValue, Action action = null)
+    private IEnumerator Updating(float delay, float targetValue)
     {
         float elepsedTime = 0;
         float stepSmooth = _endFillValue / delay;
 
-        while(_visual.fillAmount != targetValue)
+        while (_visual.fillAmount != targetValue)
         {
             _visual.fillAmount = Mathf.MoveTowards(_visual.fillAmount, targetValue, stepSmooth * Time.deltaTime);
 
@@ -51,8 +52,5 @@ public class VampirismTimerBar : MonoBehaviour
         }
 
         _text.text = Text;
-
-        if(action != null)
-            action?.Invoke();
     }
 }

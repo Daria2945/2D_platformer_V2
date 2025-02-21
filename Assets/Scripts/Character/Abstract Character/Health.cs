@@ -52,4 +52,12 @@ public class Health
 
         ChangedValue?.Invoke(_currentValue);
     }
+
+    public int GetUnitHealth(int damage)
+    {
+        if (damage <= _currentValue)
+            return damage;
+
+        return _currentValue;
+    }
 }

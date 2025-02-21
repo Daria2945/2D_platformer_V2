@@ -1,13 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(InputReader), typeof(Character))]
 public class Vampirism : MonoBehaviour
 {
     [SerializeField, Min(1)] private int _damage = 1;
-    [SerializeField] private VampirismTimerBar _timer;
+    [SerializeField] private VampirismTimer _timer;
     [SerializeField] private VampirismDetector _detector;
+    [SerializeField] private RadiusView _radiusView;
 
     private InputReader _inputReader;
     private Character _character;
@@ -50,13 +50,13 @@ public class Vampirism : MonoBehaviour
         _coroutine = StartCoroutine(Attacking());
 
         _timer.StartCounting();
-        _detector.StartFind();
+        _radiusView.Show();
     }
 
     private void Reload()
     {
         _timer.Reload();
-        _detector.StopFind();
+        _radiusView.Hide();
 
         if (_coroutine != null)
             StopCoroutine(_coroutine);
@@ -69,17 +69,17 @@ public class Vampirism : MonoBehaviour
 
     private IEnumerator Attacking()
     {
-        List<Enemy> enemies;
+        Enemy enemy;
         var wait = new WaitForSeconds(_attackCooldown);
 
         while (enabled)
         {
-            enemies = _detector.GetFoundEnemies();
+            enemy = _detector.GetNearestEnemy();
 
-            foreach (Enemy enemy in enemies)
+            if (enemy != null)
             {
+                _character.Health.ReceiveTreatment(enemy.Health.GetUnitHealth(_damage));
                 enemy.Health.TakeDamage(_damage);
-                _character.Health.ReceiveTreatment(_damage);
             }
 
             yield return wait;
